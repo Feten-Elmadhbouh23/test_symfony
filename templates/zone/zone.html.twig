@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil - choubikloubik</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E9ECEF;
+        }
+        header, nav {
+            background-color: #1762AC;
+            color: #fff;
+            padding: 10px; /* Augmentation du remplissage pour améliorer l'apparence */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: #D8E7FF;
+            margin-left: 10px; /* Ajout d'une marge entre les liens */
+            text-decoration: none; /* Suppression du soulignement des liens */
+        }
+        nav a:hover {
+            text-decoration: underline; /* Soulignement des liens au survol */
+        }
+        .container {
+            max-width: 800px; /* Limite la largeur du contenu pour une meilleure lisibilité */
+            margin: 20px auto; /* Centrer le contenu horizontalement */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour démarquer le contenu */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Fusionner les bordures de cellules */
+        }
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd; /* Ajout d'une bordure basse pour séparer les lignes */
+            text-align: left; /* Alignement du texte à gauche dans les cellules */
+        }
+        th {
+            background-color: #1762AC;
+            color: #fff;
+        }
+        button {
+            background-color:  #F630C9;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #D5008F; /* Changement de couleur au survol */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>choubikloubik</h1>
+        <nav>
+            <a href="{{ path('app_livreur') }}">Accueil</a>
+            
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+
+{% block body %}
+<div class="container">
+    <h1>Liste des zones de livraison</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Zone de livraison</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for zone in zones %}
+                <tr>
+                    <td>{{ zone.id }}</td>
+                    <td>{{ zone.zone }}</td>
+                    <td><a href="https://www.google.com/maps/search/{{ zone.zone }}" target="_blank">Consulter sur Google Map</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <h2>Ajouter une zone de livraison</h2>
+    <form action="/ajouter_zone" method="POST">
+        <label for="zone">Nom de la zone :</label><br>
+        <input type="text" id="zone" name="zone"><br><br>
+        <button type="submit">Ajouter</button>
+    </form>
+</div>
+{% endblock %}
+</body>
+</html>
