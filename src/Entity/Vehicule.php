@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Vehicule
@@ -25,6 +26,8 @@ class Vehicule
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255, nullable=false)
+     * @Assert\NotBlank(message="Le champ type ne peut pas être vide")
+     * @Assert\Choice(choices={"Voiture", "Moto", "Fourgon", "Velos" ,"Scooter"}, message="'il semble y avoir une erreur concernant le type de véhicule")
      */
     private $type;
 
@@ -38,12 +41,10 @@ class Vehicule
         return $this->type;
     }
 
-    public function setType(string $type): static
+    public function setType(string $type): self
     {
         $this->type = $type;
 
         return $this;
     }
-
-
 }

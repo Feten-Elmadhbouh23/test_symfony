@@ -36,35 +36,69 @@ class VehiculeController extends AbstractController
     public function ajouterVehicule(Request $request): Response
     {
         $type = $request->request->get('type');
+    
+     
+        if (empty($type)) {
+            return new Response('Le champ type ne peut pas être vide.', Response::HTTP_BAD_REQUEST);
+        }
+    
+        $existingVehicule = $this->entityManager->getRepository(Vehicule::class)->findOneBy(['type' => $type]);
+        if ($existingVehicule) {
+            return new Response('Ce type de véhicule existe déjà.', Response::HTTP_BAD_REQUEST);
+        }
+    
+        $typesAutorises = ["scooter", "velo", "Moto", "fourgon", "voiture"];
+        if (!in_array($type, $typesAutorises)) {
+            return new Response('Le type de véhicule n\'est pas valide.', Response::HTTP_BAD_REQUEST);
+        }
+    
         $vehicule = new Vehicule();
         $vehicule->setType($type);
         $this->entityManager->persist($vehicule);
         $this->entityManager->flush();
+    
         return $this->redirectToRoute('app_vehicule');
     }
     #[Route('/modifier-vehicule/{id}', name: 'modifier_vehicule')]
     public function modifierVehicule(Request $request, $id): Response
     {
         if ($request->isXmlHttpRequest()) {
-            // Récupérer les données envoyées via AJAX
             $data = json_decode($request->getContent(), true);
             
-            // Modifier le véhicule avec les données reçues
+            $nouveauType = $data['new_type'];
+            
+            if (empty($nouveauType)) {
+                return new Response('Le champ type ne peut pas être vide.', Response::HTTP_BAD_REQUEST);
+            }
+            
             $vehicule = $this->entityManager->getRepository(Vehicule::class)->find($id);
             
             if (!$vehicule) {
                 return new JsonResponse(['error' => 'Véhicule non trouvé pour l\'ID '.$id], JsonResponse::HTTP_NOT_FOUND);
             }
-
-            $nouveauType = $data['new_type'];
+    
+            
+            $existingVehicule = $this->entityManager->getRepository(Vehicule::class)->findOneBy(['type' => $nouveauType]);
+            if ($existingVehicule && $existingVehicule->getId() != $id) {
+                return new Response('Ce type de véhicule existe déjà.', Response::HTTP_BAD_REQUEST);
+            }
+    
+            
+            $typesAutorises = ["scooter", "velo", "Moto", "fourgon", "voiture"];
+            if (!in_array($nouveauType, $typesAutorises)) {
+                return new Response('Le type de véhicule n\'est pas valide.', Response::HTTP_BAD_REQUEST);
+            }
+    
             $vehicule->setType($nouveauType);
             $this->entityManager->flush();
-
+    
             return new JsonResponse(['success' => true]);
         }
-
+    
         return new JsonResponse(['error' => 'Cette route doit être utilisée avec une requête AJAX.'], JsonResponse::HTTP_METHOD_NOT_ALLOWED);
     }
+    
+  
 
     #[Route('/supprimer-vehicule/{id}', name: 'supprimer_vehicule')]
     public function supprimerVehicule($id): Response

@@ -9,56 +9,142 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #E9ECEF;
+            background-color: #FAF0E1;
+            color: #333;
         }
-        header, nav {
-            background-color: #1762AC;
+        header {
+            background-color: #343a40;
             color: #fff;
-            padding: 10px; /* Augmentation du remplissage pour améliorer l'apparence */
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         nav a {
-            color: #D8E7FF;
-            margin-left: 10px; /* Ajout d'une marge entre les liens */
-            text-decoration: none; /* Suppression du soulignement des liens */
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s ease;
         }
         nav a:hover {
-            text-decoration: underline; /* Soulignement des liens au survol */
+            color: #f39c12;
         }
         .container {
-            max-width: 800px; /* Limite la largeur du contenu pour une meilleure lisibilité */
-            margin: 20px auto; /* Centrer le contenu horizontalement */
+            max-width: 1200px;
+            margin: 20px auto;
             padding: 20px;
+            display: flex; /* Utilisation de flexbox */
+            flex-wrap: wrap; /* Permettre le retour à la ligne si nécessaire */
+            justify-content: space-between; /* Espacement égal entre les éléments */
+        }
+        .card {
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre pour démarquer le contenu */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            width: calc(50% - 40px); /* Largeur de la moitié moins les marges */
+            margin: 25px;
         }
-        table {
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            color: #343a40;
+            margin-left: 20px;
+        }
+        .card-content {
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
             width: 100%;
-            border-collapse: collapse; /* Fusionner les bordures de cellules */
-        }
-        th, td {
             padding: 8px;
-            border-bottom: 1px solid #ddd; /* Ajout d'une bordure basse pour séparer les lignes */
-            text-align: left; /* Alignement du texte à gauche dans les cellules */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 5px;
         }
-        th {
-            background-color: #1762AC;
-            color: #fff;
-        }
-        button {
-            background-color:  #F630C9;
+        button[type="submit"] {
+            background-color: #f39c12;
             color: #fff;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
             border-radius: 4px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
         }
-        button:hover {
-            background-color: #D5008F; /* Changement de couleur au survol */
+        button[type="submit"]:hover {
+            background-color: #e74c3c;
+        }
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px;
+        }
+        .footer-content {
+            margin-bottom: 20px;
+        }
+        .footer-content h3 {
+            margin-bottom: 10px;
+        }
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+        ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #f2f2f2; /* Couleur de fond du tableau */
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f39c12;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .car-icon {
+            display: inline-block;
+            margin-right: 10px;
+            animation: moveCar 2s linear infinite; /* Animation de déplacement */
+        }
+
+        @keyframes moveCar {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
         }
     </style>
 </head>
@@ -67,42 +153,81 @@
         <h1>choubikloubik</h1>
         <nav>
             <a href="{{ path('app_livreur') }}">Accueil</a>
-            
             <a href="#">Logout</a>
         </nav>
     </header>
 
-{% block body %}
-<div class="container">
-    <h1>Liste des zones de livraison</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Zone de livraison</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for zone in zones %}
+    <div class="container">
+        <h1>Liste des zones de livraison</h1>
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>{{ zone.id }}</td>
-                    <td>{{ zone.zone }}</td>
-                    <td><a href="https://www.google.com/maps/search/{{ zone.zone }}" target="_blank">Consulter sur Google Map</a></td>
+                    <th scope="col">ID</th>
+                    <th scope="col">Zone de livraison</th>
+                    <th scope="col">Action</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                {% for zone in zones %}
+                    <tr>
+                        <td>{{ zone.id }}</td>
+                        <td>{{ zone.zone }}</td>
+                        <td><button class="choisir" data-id="{{ zone.id }}">choisir</button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-<div class="container">
-    <h2>Ajouter une zone de livraison</h2>
-    <form action="/ajouter_zone" method="POST">
-        <label for="zone">Nom de la zone :</label><br>
-        <input type="text" id="zone" name="zone"><br><br>
-        <button type="submit">Ajouter</button>
-    </form>
-</div>
-{% endblock %}
+    <div class="container">
+        <div class="card">
+            <h2>Ajouter une zone de livraison</h2>
+            <form action="/ajouter_zone" method="POST">
+                <label for="zone">Nom de la zone :</label><br>
+                <input type="text" id="zone" name="zone"><br><br>
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Contactez-nous</h3>
+                <p>Adresse : 123 Rue de la Plateforme, Ville, Pays</p>
+                <p>Téléphone : +123 456 789</p>
+                <p>Email : contact@choubikloubik.com</p>
+            </div>
+            <div class="footer-content">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Conditions d'utilisation</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Suivez-nous</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Récupérer tous les boutons avec la classe "choisir"
+        const buttons = document.querySelectorAll('.choisir');
+        
+        // Ajouter un gestionnaire d'événements à chaque bouton
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const zoneId = button.dataset.id;
+                window.location.href = `/adresse/${zoneId}`;
+            });
+        });
+    </script>
 </body>
 </html>
