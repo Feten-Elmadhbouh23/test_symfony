@@ -39,12 +39,6 @@ class CommandeResto
      * @ORM\JoinColumn(name="id_client", referencedColumnName="id", onDelete="CASCADE")
      */
     private $idClient;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $livraison;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -94,15 +88,6 @@ class CommandeResto
         return $this;
     }
 
-    public function isLivraison(): ?bool
-    {
-        return $this->livraison;
-    }
-
-    public function setLivraison(bool $livraison): self
-    {
-        $this->livraison = $livraison;
-        return $this;
-    }
+    
 }
 

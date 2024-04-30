@@ -1,3 +1,0 @@
-framework:
-    mailer:
-        dsn: 'smtp://smtp.gmail.com:587?encryption=tls&auth_mode=login&username=feten.elmadhbouh@esprit.tn.com&password=%env(MAILER_PASSWORD)%'

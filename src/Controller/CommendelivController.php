@@ -44,16 +44,4 @@ class CommendelivController extends AbstractController
 
         return $this->redirectToRoute('app_liste');
     }
-
-    #[Route('/commendeliv/{id}/livraison', name: 'app_marquer_livraison', methods: ['POST'])]
-    public function marquerLivraison(CommandeResto $commande): RedirectResponse
-    {
-        // Marquer la commande comme livrée
-        $commande->setLivraison(true);
-        $this->entityManager->flush();
-
-        $this->addFlash('success', 'La livraison de la commande a été marquée comme effectuée.');
-
-        return $this->redirectToRoute('app_liste');
-    }
 }
