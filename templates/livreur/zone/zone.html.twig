@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil - choubikloubik</title>
+    <!--===============================================================================================-->	
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->	
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->	
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    <style>
+        
+        header {
+            background-color:#FEFAF1; /* Couleur de fond du header */
+            color: #fff; /* Couleur de texte du header */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+        }
+        nav a {
+            color: #095239;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s ease; /* Transition de couleur au survol */
+        }
+        nav a:hover {
+            color: #f39c12; /* Couleur orange au survol */
+        }
+        .container {
+            max-width: 1500px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .table-section {
+            background-color: #fff;
+            padding: 100px;
+            text-align: center;
+            border-radius:100px;
+            box-shadow: 0 4px10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+        }
+        .details-section {
+            background-color: #fff;
+            padding: 100px;
+            text-align: center;
+            border-radius:100px;
+            box-shadow: 0 4px10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            display: none; /* Masquer par défaut */
+        }
+        .container-login100 {
+            background-image: url('images/back.jpg'); /* Ajout de l'image en arrière-plan */
+            background-size: cover; /* Redimensionnement de l'image pour couvrir toute la zone */
+            background-position: center; /* Positionnement centré de l'image */
+            height: 100vh; /* Taille égale à la hauteur de la fenêtre */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h2 {
+            color: #032010; /* Couleur de titre */
+        }
+        h1 {
+            color:#095239; /* Couleur de titre */
+        }
+        p {
+            color: #095239; /* Couleur de texte secondaire */
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            width: 320px; /* Largeur de la carte */
+            margin: 250px; /* Marge autour de la carte */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+         footer {
+            background-color:#FEFAF1;
+            color: #fff;
+            padding:0.5px;
+        }
+        .footer-content {
+            margin-bottom: 0.8px;
+        }
+        .footer-content h3 {
+            margin-bottom: 0.8px;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .btn {
+            background-color: #f39c12; /* Couleur orange */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            margin: 0 10px;
+        }
+        .btn:hover {
+            background-color: #e74c3c; /* Couleur rouge au survol */
+        }
+       .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff; /* Couleur de fond du tableau */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center; 
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #FD6767;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+
+        .car-icon {
+            display: inline-block;
+            margin-right: 10px;
+            animation: moveCar 2s linear infinite; /* Animation de déplacement */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>choubikloubik</h1>
+        <nav>
+            <a href="{{ path('app_livreur') }}">Accueil</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+    <div class="container-login100" style="background-image: url('images/back.jpg');">
+        <div class="container">
+            <section class="table-section">
+                <h1>Liste des zones de livraison</h1>
+                <table class="table">
+                
+                    <thead>
+                        <tr>
+                            <th scope="col">Zone de livraison</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for zone in zones %}
+                            <tr class="zone-row" data-zone="{{ zone.zone }}">
+                                <td >{{ zone.zone}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    
+                </table>
+            </section>    
+
+     <section class="details-section">
+    <h1 id="zone-details">Clients dans la zone</h1>
+     <table id="clients-table" class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Adresse email</th>
+                <th>Adresse</th>
+                <th>Numéro de téléphone</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.prenom }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.adresse }}</td>
+                <td>{{ client.numTel }}</td>
+                <td><button class="consulter">livree sa commende </button></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</section>
+  
+        </div>
+    </div>
+ <script>
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        var zoneRows = document.querySelectorAll('.zone-row');
+        var detailsSection = document.querySelector('.details-section');
+        var zoneDetails = document.querySelector('#zone-details');
+        var clientsTable = document.querySelector('#clients-table');
+
+        zoneRows.forEach(function(row) {
+            row.addEventListener('click', function() {
+                // Récupérer le nom de la zone
+                var zoneName = this.dataset.zone;
+
+                // Mettre à jour les détails de la zone
+                zoneDetails.textContent = "La zone sélectionnée est : " + zoneName;
+                
+                // Afficher la section des détails
+                detailsSection.style.display = "block";
+
+                // Charger les clients de la zone sélectionnée
+                fetch("/zone/" + zoneName)
+                    .then(response => response.json())
+                    .then(clients => {
+                        // Vider le tableau des clients
+                        clientsTable.innerHTML = '';
+
+                        // Ajouter les clients au tableau
+                        clients.forEach(client => {
+                            var row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${client.id}</td>
+                                <td>${client.nom}</td>
+                                <td>${client.prenom}</td>
+                                <td>${client.email}</td>
+                                <td>${client.adresse}</td>
+                                <td>${client.numTel}</td>
+                                <td><button class="consulter" data-client-id="${client.id}">Livrée sa commande</button></td>
+                            `;
+                            clientsTable.appendChild(row);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors de la récupération des clients :', error);
+                    });
+            });
+        });
+
+        clientsTable.addEventListener('click', function(event) {
+            if (event.target.classList.contains('consulter')) {
+                var clientId = event.target.dataset.clientId;
+
+                window.location.href = "{{ path('app_livraison', {'clientId': 'XXX'}) }}".replace('XXX', clientId);
+            }
+        });
+
+    });
+</script>
+
+
+</body>
+</html>

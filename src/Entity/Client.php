@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Client
@@ -53,13 +53,6 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255, nullable=false)
-     */
-    private $username;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
      */
     private $adresse;
@@ -78,6 +71,8 @@ class Client
      */
     private $date;
 
+   
+
     public function getId(): ?int
     {
         return $this->id;
@@ -88,7 +83,7 @@ class Client
         return $this->nom;
     }
 
-    public function setNom(string $nom): static
+    public function setNom(string $nom): self
     {
         $this->nom = $nom;
 
@@ -100,7 +95,7 @@ class Client
         return $this->prenom;
     }
 
-    public function setPrenom(string $prenom): static
+    public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
 
@@ -112,7 +107,7 @@ class Client
         return $this->email;
     }
 
-    public function setEmail(string $email): static
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
@@ -124,21 +119,9 @@ class Client
         return $this->password;
     }
 
-    public function setPassword(string $password): static
+    public function setPassword(string $password): self
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    public function getUsername(): ?string
-    {
-        return $this->username;
-    }
-
-    public function setUsername(string $username): static
-    {
-        $this->username = $username;
 
         return $this;
     }
@@ -148,7 +131,7 @@ class Client
         return $this->adresse;
     }
 
-    public function setAdresse(string $adresse): static
+    public function setAdresse(string $adresse): self
     {
         $this->adresse = $adresse;
 
@@ -160,7 +143,7 @@ class Client
         return $this->numTel;
     }
 
-    public function setNumTel(int $numTel): static
+    public function setNumTel(int $numTel): self
     {
         $this->numTel = $numTel;
 
@@ -172,16 +155,9 @@ class Client
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): static
+    public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 
         return $this;
-    }
-    public function getRoles(): array
-    {
-        return ['ROLE_CLIENT'];
-    }
-
-
-}
+    }}

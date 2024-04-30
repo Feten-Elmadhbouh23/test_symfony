@@ -135,42 +135,37 @@
         </nav>
     </header>
  <div class="container-login100" style="background-image: url('images/back.jpg');">
+ 
     <div class="container">
-        <section class="welcome-section">
-            <div class="logo-container">
-                <img src="images/logo.jpg" alt="Logo Choubikloubik">
-            </div>
-            <h2>BIENVENUE SUR CHOUBIKLOUBIK</h2>
-               
-            <p>Nous sommes ravis de vous accueillir sur notre plateforme. Profitez de nos services exceptionnels !</p>
-            <div class="container">
-             <button class="btn" onclick="handleZoneLivraison()">Zone de Livraison</button>
-              <button class="btn" onclick="handleCommandeClient()">Commande Client</button>
-              <button class="btn" onclick="handleGestionVehicules()">     Véhicule      </button>
-                </div>
-       </section>    
-      </div>
-   </div>
-    <script src="scripts.js"></script>
-    <script>
-        function handleZoneLivraison() {
-            window.location.href = "/zone";
-        }
-
-        function handleGestionVehicules() {
-            window.location.href = "/vehicule";
-        }
-
-        function handleCommandeClient() {
-            window.location.href = "/commendeliv";
-        }
-
-        function handleLogout() {
-            window.location.href = "logout.html";
-        }
-    </script>
+    <section class="welcome-section">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date de création</th>
+                <th>Total</th>
+                <th>Type de paiement</th>
+                <th>Client</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.id }}</td>
+                <td>{{ commande.dateCreation|date('Y-m-d H:i:s') }}</td>
+                <td>{{ commande.total }}</td>
+                <td>{{ commande.paymentType }}</td>
+                <td>{{ commande.idClient.nom }}</td> 
+                <td>
+                    <form method="post" action="{{ path('app_marquer_livraison', {'id': commande.id}) }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token('marquer-livraison' ~ commande.id) }}">
+                    <button type="submit" class="btn">Marquer livraison</button>
+              </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+     </section>
+    </div>
 </body>
-
-
-
 </html>

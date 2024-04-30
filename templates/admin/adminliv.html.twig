@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'accueil - choubikloubik</title>
-
+    <!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
 <!--===============================================================================================-->
     <style>
         
@@ -128,31 +145,41 @@
 </head>
 <body>
     <header>
-        <h1>choubikloubik</h1>
+        <h1>Interface d'administration </h1>
         <nav>
             <a href="{{ path('app_livreur') }}">Accueil</a>
-            <a href="#">Logout</a>
+             <a href="{{ path('app_livraison') }}">livraison</a>
+              <a href="{{ path(handleZoneLivraison) }}">zone de livraison </a>
         </nav>
     </header>
- <div class="container-login100" style="background-image: url('images/back.jpg');">
     <div class="container">
-        <section class="welcome-section">
-            <div class="logo-container">
-                <img src="images/logo.jpg" alt="Logo Choubikloubik">
-            </div>
-            <h2>BIENVENUE SUR CHOUBIKLOUBIK</h2>
-               
-            <p>Nous sommes ravis de vous accueillir sur notre plateforme. Profitez de nos services exceptionnels !</p>
-            <div class="container">
-             <button class="btn" onclick="handleZoneLivraison()">Zone de Livraison</button>
-              <button class="btn" onclick="handleCommandeClient()">Commande Client</button>
-              <button class="btn" onclick="handleGestionVehicules()">     Véhicule      </button>
-                </div>
-       </section>    
-      </div>
-   </div>
-    <script src="scripts.js"></script>
-    <script>
+        <h2>Liste des livreurs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for livreur in livreurs %}
+                    <tr>
+                        <td>{{ livreur.id }}</td>
+                        <td>{{ livreur.nom }}</td>
+                        <td>{{ livreur.prenom }}</td>
+                        <td>{{ livreur.email }}</td>
+                        <td>
+                            <a href="{{ path('consulter_livreur', {'id': livreur.id}) }}">Consulter</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+     <script>
         function handleZoneLivraison() {
             window.location.href = "/zone";
         }
@@ -170,7 +197,4 @@
         }
     </script>
 </body>
-
-
-
 </html>

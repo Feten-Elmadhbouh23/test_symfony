@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ZoneLiv
@@ -25,6 +26,7 @@ class ZoneLiv
      * @var string
      *
      * @ORM\Column(name="zone", type="string", length=255, nullable=false)
+     * @Assert\Type(type="string")
      */
     private $zone;
 
@@ -38,12 +40,10 @@ class ZoneLiv
         return $this->zone;
     }
 
-    public function setZone(string $zone): static
+    public function setZone(string $zone): self
     {
         $this->zone = $zone;
 
         return $this;
     }
-
-
 }

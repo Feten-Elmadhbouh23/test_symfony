@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails de la livraison</title>
+    <!-- Mettez ici les liens vers vos fichiers CSS et autres ressources -->
+</head>
+<body>
+    <h1>Détails de la livraison</h1>
+    <div>
+        <p><strong>Nom du client :</strong> {{ clientDetails.nom }}</p>
+        <p><strong>Prénom du client :</strong> {{ clientDetails.prenom }}</p>
+        <p><strong>Adresse :</strong> {{ clientDetails.adresse }}</p>
+        <p><strong>Numéro de téléphone :</strong> {{ clientDetails.numTel }}</p>
+        <p><strong>Email :</strong> {{ clientDetails.email }}</p>
+        <p><strong>Véhicule de livraison :</strong> {{ dernierVehicule.type }}</p>
+        <p><strong>Date :</strong> {{ derniereCommande.dateCreation|date('d/m/Y H:i:s') }}</p>
+        <p><strong>Prix :</strong> {{ derniereCommande.total }} €</p>
+        <p><strong>Type de paiement :</strong> {{ derniereCommande.paymentType }}</p>
+    </div>
+
+    <!-- Mettez ici d'autres éléments HTML ou Twig si nécessaire -->
+</body>
+</html>

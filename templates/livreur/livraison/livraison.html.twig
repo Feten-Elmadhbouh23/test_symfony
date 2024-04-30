@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil - choubikloubik</title>
+    <!--===============================================================================================-->    
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->    
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->    
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+     <style>
+        
+        header {
+            background-color:#FEFAF1; /* Couleur de fond du header */
+            color: #fff; /* Couleur de texte du header */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+        }
+        nav a {
+            color: #095239;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s ease; /* Transition de couleur au survol */
+        }
+        nav a:hover {
+            color: #f39c12; /* Couleur orange au survol */
+        }
+        .container {
+            max-width: 1500px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .table-section {
+            background-color: #fff;
+            padding: 100px;
+            text-align: center;
+            border-radius:100px;
+            box-shadow: 0 4px10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+        }
+        .details-section {
+            background-color: #fff;
+            padding: 100px;
+            text-align: center;
+            border-radius:100px;
+            box-shadow: 0 4px10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            display: none; /* Masquer par défaut */
+        }
+        .container-login100 {
+            background-image: url('images/back.jpg'); /* Ajout de l'image en arrière-plan */
+            background-size: cover; /* Redimensionnement de l'image pour couvrir toute la zone */
+            background-position: center; /* Positionnement centré de l'image */
+            height: 100vh; /* Taille égale à la hauteur de la fenêtre */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h2 {
+            color: #032010; /* Couleur de titre */
+        }
+        h1 {
+            color:#095239; /* Couleur de titre */
+        }
+        p {
+            color: #095239; /* Couleur de texte secondaire */
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            width: 320px; /* Largeur de la carte */
+            margin: 250px; /* Marge autour de la carte */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+         footer {
+            background-color:#FEFAF1;
+            color: #fff;
+            padding:0.5px;
+        }
+        .footer-content {
+            margin-bottom: 0.8px;
+        }
+        .footer-content h3 {
+            margin-bottom: 0.8px;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .btn {
+            background-color: #f39c12; /* Couleur orange */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            margin: 0 10px;
+        }
+        .btn:hover {
+            background-color: #e74c3c; /* Couleur rouge au survol */
+        }
+       .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff; /* Couleur de fond du tableau */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center; 
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #FD6767;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+
+        .car-icon {
+            display: inline-block;
+            margin-right: 10px;
+            animation: moveCar 2s linear infinite; /* Animation de déplacement */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>choubikloubik</h1>
+        <nav>
+            <a href="{{ path('app_livreur') }}">Accueil</a>
+            <a href="#">Logout</a>
+        </nav>
+    </header>
+<div class="container-login100" style="background-image: url('images/back.jpg');">
+    <div class="container">
+    <h1>Détails de la livraison</h1>
+        <table class="table-section">
+            <tr>
+            <th>Nom du client </th>
+            <th>Prénom du client </th>
+             <th>adresse </th>
+             <th>numTel </th>
+             <th>email</th>
+            <th>Véhicule de livraison </th>
+             <th>Date :</th>
+            <th>prix :</th>
+            <th>Type de paiement :</th>
+            </tr>
+            <tr>
+                 <td>{{ clientDetails.nom }}</td>
+                 <td>{{ clientDetails.prenom }}</td>
+                  <td>{{ clientDetails.adresse }}</td>
+                 <td>{{ clientDetails.numTel}}</td>
+                 <td>{{ clientDetails.email}}</td>
+                 <td>{{ dernierVehicule.type }}</td>
+                 <td>{{ derniereCommande.dateCreation|date('d/m/Y H:i:s') }}</td>
+                 <td>{{ derniereCommande.total }} €</td>
+                  <td>{{ derniereCommande.paymentType }}</td>
+            </tr>
+            </table>
+         
+   
+            <tr>
+               <td> <h2>Consulter Map</h2></td>
+                <td><button id="showRouteButton" class="btn">Afficher l'itinéraire</button></td>
+       
+                <td><div id="map" style="display: none; height: 800px; width: 800px;"></div>  </td>
+            </tr>
+              <tr>
+             <td><h2>Envoyer la status de la livraison</h2></td>
+             <td><button id="sendEmailButton" class="btn">Envoyer un e-mail</button></td>
+             <td></td> <!-- Ajoutez une cellule vide pour aligner les boutons -->
+             </tr>
+        </table>
+    </div>
+</div>
+
+   <script>
+        function initMap() {
+            var mapOptions = {
+                zoom: 8,
+                center: {lat: -34.397, lng: 150.644} // Centre de la carte par défaut
+            };
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            var geocoder = new google.maps.Geocoder();
+
+            document.getElementById('showRouteButton').addEventListener('click', function() {
+                document.getElementById('map').style.display = 'block';
+
+                // Récupérer la dernière adresse du livreur (à remplacer par la logique appropriée)
+                var deliveryAddress = "Dernière adresse du livreur";
+
+                // Récupérer l'adresse du client depuis les données affichées sur la page
+                var clientAddress = "{{ clientDetails.adresse }}";
+
+                // Géocodage des adresses
+                geocoder.geocode({ 'address': deliveryAddress }, function(deliveryResults, deliveryStatus) {
+                    if (deliveryStatus == google.maps.GeocoderStatus.OK) {
+                        geocoder.geocode({ 'address': clientAddress }, function(clientResults, clientStatus) {
+                            if (clientStatus == google.maps.GeocoderStatus.OK) {
+                                // Créer l'itinéraire
+                                var directionsService = new google.maps.DirectionsService();
+                                var directionsRenderer = new google.maps.DirectionsRenderer();
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 8,
+                                    center: {lat: -34.397, lng: 150.644} // Centre par défaut
+                                });
+                                directionsRenderer.setMap(map);
+
+                                var request = {
+                                    origin: deliveryResults[0].geometry.location,
+                                    destination: clientResults[0].geometry.location,
+                                    travelMode: google.maps.TravelMode.DRIVING
+                                };
+
+                                // Tracer l'itinéraire
+                                directionsService.route(request, function(response, status) {
+                                    if (status == google.maps.DirectionsStatus.OK) {
+                                        directionsRenderer.setDirections(response);
+                                    } else {
+                                        alert('Impossible de tracer l\'itinéraire : ' + status);
+                                    }
+                                });
+                            } else {
+                                alert('Géocodage de l\'adresse du client échoué : ' + clientStatus);
+                            }
+                        });
+                    } else {
+                        alert('Géocodage de la dernière adresse du livreur échoué : ' + deliveryStatus);
+                    }
+                });
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+<script>
+    // Ajout de l'événement de clic sur le bouton "Envoyer un e-mail"
+    document.getElementById("sendEmailButton").addEventListener("click", function() {
+        // Ici, vous écririez le code pour envoyer un e-mail aux clients
+        // Par exemple, vous pouvez faire une requête à une API d'envoi d'e-mails ou à une fonction serveur
+        // Remplacez cette alerte par votre code d'envoi d'e-mail réel
+        alert("Un e-mail d'information a été envoyé au client.");
+    });
+</script>
+</body>
+</html>

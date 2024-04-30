@@ -5,29 +5,23 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
- * Vehicule
- *
- * @ORM\Table(name="vehicule")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\VehiculeRepository")
  */
 class Vehicule
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Le champ type ne peut pas être vide")
-     * @Assert\Choice(choices={"Voiture", "Moto", "Fourgon", "Velos" ,"Scooter"}, message="'il semble y avoir une erreur concernant le type de véhicule")
+     * @Assert\Choice(choices={"Voiture", "Moto", "Fourgon", "Velo" ,"Scooter"}, message="Il semble y avoir une erreur concernant le type de véhicule")
      */
     private $type;
 

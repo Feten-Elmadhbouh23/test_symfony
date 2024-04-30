@@ -1,57 +1,49 @@
 <?php
 
+// src/Entity/CommandeResto.php
+
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CommandeResto
- *
  * @ORM\Table(name="commande_resto", indexes={@ORM\Index(name="fk_clientid", columns={"id_client"})})
  * @ORM\Entity
  */
 class CommandeResto
 {
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_creation", type="datetime", nullable=false)
+     * @ORM\Column(type="datetime")
      */
     private $dateCreation;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="total", type="integer", nullable=false)
+     * @ORM\Column(type="integer")
      */
     private $total;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="payment_type", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $paymentType;
 
     /**
-     * @var \Client
-     *
-     * @ORM\ManyToOne(targetEntity="Client")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_client", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client")
+     * @ORM\JoinColumn(name="id_client", referencedColumnName="id", onDelete="CASCADE")
      */
     private $idClient;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $livraison;
 
     public function getId(): ?int
     {
@@ -63,10 +55,9 @@ class CommandeResto
         return $this->dateCreation;
     }
 
-    public function setDateCreation(\DateTimeInterface $dateCreation): static
+    public function setDateCreation(\DateTimeInterface $dateCreation): self
     {
         $this->dateCreation = $dateCreation;
-
         return $this;
     }
 
@@ -75,10 +66,9 @@ class CommandeResto
         return $this->total;
     }
 
-    public function setTotal(int $total): static
+    public function setTotal(int $total): self
     {
         $this->total = $total;
-
         return $this;
     }
 
@@ -87,10 +77,9 @@ class CommandeResto
         return $this->paymentType;
     }
 
-    public function setPaymentType(string $paymentType): static
+    public function setPaymentType(string $paymentType): self
     {
         $this->paymentType = $paymentType;
-
         return $this;
     }
 
@@ -99,12 +88,21 @@ class CommandeResto
         return $this->idClient;
     }
 
-    public function setIdClient(?Client $idClient): static
+    public function setIdClient(?Client $idClient): self
     {
         $this->idClient = $idClient;
-
         return $this;
     }
 
+    public function isLivraison(): ?bool
+    {
+        return $this->livraison;
+    }
 
+    public function setLivraison(bool $livraison): self
+    {
+        $this->livraison = $livraison;
+        return $this;
+    }
 }
+

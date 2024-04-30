@@ -1,15 +1,22 @@
 <?php
-
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="livreur", indexes={@ORM\Index(name="fk_zone", columns={"id_zone_livraison"}), @ORM\Index(name="fk_vehi", columns={"id_vehicule"})})
+ * @ORM\Table(name="livreur", indexes={@ORM\Index(name="fk_zone", columns={"id_zone_livraison"})})
  * @ORM\Entity
  */
 class Livreur
 {
+/**
+ * @ORM\ManyToOne(targetEntity="App\Entity\Vehicule")
+ * @ORM\JoinColumn(name="id_vehicule", referencedColumnName="id")
+ */
+private $vehicule;
+
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -57,14 +64,6 @@ class Livreur
      * @ORM\JoinColumn(name="id_zone_livraison", referencedColumnName="id")
      */
     private $zoneLivraison;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Vehicule")
-     * @ORM\JoinColumn(name="id_vehicule", referencedColumnName="id")
-     */
-    private $vehicule;
-
-    // Getters and setters
     public function getId(): ?int
     {
         return $this->id;
